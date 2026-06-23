@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 · 温和入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f1f6f9;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      color: #1e2b34;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 2rem auto 3rem;
+    }
+
+    /* 开场 hero 背景 */
+    .hero {
+      background: linear-gradient(145deg, #e0f0f5 0%, #c8e2ed 100%);
+      border-radius: 2.5rem;
+      padding: 3rem 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 24px rgba(35, 90, 105, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 280px;
+      height: 280px;
+      background: rgba(70, 150, 160, 0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: #144a57;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: #1c6d7a;
+      color: #f0fafd;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+
+    .hero .tagline {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #235c6a;
+      max-width: 640px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .tagline a {
+      color: #1d5d6b;
+      text-decoration: underline dotted #3f94a5 2px;
+      text-underline-offset: 4px;
+      font-weight: 500;
+    }
+
+    /* 承接段落卡片网格 */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.8rem;
+    }
+
+    @media (min-width: 580px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 4px 12px rgba(40, 100, 110, 0.06);
+      border: 1px solid rgba(90, 170, 180, 0.15);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(60, 140, 150, 0.08);
+    }
+
+    .card p {
+      color: #2b4a54;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card .highlight {
+      color: #1a6b78;
+      font-weight: 500;
+    }
+
+    /* 特点列表 —— 温和条目 */
+    .feature-section {
+      background: #d9e9ef;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .feature-section h2 {
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: #14424e;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.2px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .feature-item {
+      background: white;
+      border-radius: 60px;
+      padding: 0.8rem 1.5rem 0.8rem 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      box-shadow: 0 2px 6px rgba(30, 80, 90, 0.04);
+      border: 1px solid #bdd7df;
+    }
+
+    .feature-item::before {
+      content: '▹';
+      color: #2f8b9b;
+      font-size: 1.3rem;
+      margin-right: 0.6rem;
+      line-height: 1;
+    }
+
+    .feature-item span {
+      color: #1e4c58;
+    }
+
+    .feature-item a {
+      color: #1a6979;
+      text-decoration: underline wavy #4696a8 1px;
+      text-underline-offset: 5px;
+    }
+
+    /* 场景 & 提示 */
+    .scene-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2.3rem 0;
+    }
+
+    .scene-card {
+      flex: 1 1 200px;
+      background: white;
+      border-radius: 1.6rem;
+      padding: 1.4rem 1.4rem 1.8rem;
+      border-left: 5px solid #489dab;
+      box-shadow: 0 4px 10px rgba(40, 100, 110, 0.03);
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: #1d5c69;
+      margin-bottom: 0.4rem;
+    }
+
+    .scene-card p {
+      color: #355e69;
+      font-size: 0.96rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #ecf4f7;
+      padding: 1.5rem 1.8rem;
+      border-radius: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #1c5664;
+      cursor: pointer;
+      padding: 0.2rem 0;
+      font-size: 0.98rem;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      color: #3a8d9d;
+    }
+
+    .faq-mini p {
+      color: #2f5863;
+      margin: 0.4rem 0 0.8rem 0.6rem;
+      font-size: 0.92rem;
+    }
+
+    /* 温和结尾 */
+    .gentle-footer {
+      margin-top: 2.5rem;
+      padding: 1.5rem 0 0.2rem;
+      border-top: 1px solid #c5dae2;
+      text-align: center;
+      color: #3b6c78;
+      font-size: 0.95rem;
+    }
+
+    .gentle-footer a {
+      color: #1d6c7c;
+      text-decoration: none;
+      border-bottom: 1px solid #7bb6c4;
+    }
+
+    .gentle-footer a:hover {
+      border-bottom: 2px solid #1e6f80;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+      .feature-item {
+        width: 100%;
+      }
+      .scene-note {
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 800px) {
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .hero .tagline {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* 点缀小元素 */
+    .dot-accent {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #479caa;
+      border-radius: 50%;
+      margin: 0 0.3rem;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 开场短句 hero -->
+  <div class="hero">
+    <h1>一处安静的起点<span class="dot-accent"></span><em>MK体育</em></h1>
+    <div class="tagline">
+      每天都有许多人走进这里，只是看看、翻翻、停留一会儿。  
+      <a href="https://officialwap-mk.com">MK体育</a> 就是这样一个地方——不吵不闹，想待多久都行。
+    </div>
+  </div>
+
+  <!-- 承接段落：两点稳定感受 -->
+  <div class="intro-grid">
+    <div class="card">
+      <p><span class="highlight">○ 入口简单</span> —— 没有必须登录的墙面，没有弹窗催你注册。想浏览就直接浏览，像推开一扇虚掩的门。</p>
+    </div>
+    <div class="card">
+      <p><span class="highlight">○ 页面清爽</span> —— 信息排列清楚，重点内容一眼就能看到。就算第一次来，也不会迷路。</p>
+    </div>
+  </div>
+
+  <!-- 特点列表 (温和版) -->
+  <div class="feature-section">
+    <h2>一些让人舒服的细节</h2>
+    <div class="feature-list">
+      <div class="feature-item"><span>页面加载快，不考验耐心</span></div>
+      <div class="feature-item"><span>内容分类直观，找东西不费力</span></div>
+      <div class="feature-item"><span>整体风格克制，没有闪烁 banner 干扰视线</span></div>
+      <div class="feature-item"><span>链接清晰，比如 <a href="https://officialwap-mk.com">MK体育</a> 就在它该在的位置</span></div>
+      <div class="feature-item"><span>多设备适配，手机上看也规整</span></div>
+    </div>
+  </div>
+
+  <!-- 场景卡片: 不同人使用的自然状态 -->
+  <div class="scene-note">
+    <div class="scene-card">
+      <h3>◈ 随手翻翻</h3>
+      <p>等人、坐车、睡前 —— 打开页面随便划两下，没有负担。</p>
+    </div>
+    <div class="scene-card">
+      <h3>◈ 固定习惯</h3>
+      <p>每天固定时间来一会儿，界面熟悉，操作顺手。</p>
+    </div>
+    <div class="scene-card">
+      <h3>◈ 安静探索</h3>
+      <p>新来的用户不用着急，所有内容都摆在那里，慢慢看。</p>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 简短 -->
+  <div class="faq-mini">
+    <details>
+      <summary>第一次来，需要注册吗？</summary>
+      <p>不需要。你可以直接浏览 <a href="https://officialwap-mk.com">MK体育</a> 的公开内容，注册是可选项。</p>
+    </details>
+    <details>
+      <summary>手机上看会不会变形？</summary>
+      <p>页面采用了响应式设计，在手机、平板、电脑上都能正常阅读。</p>
+    </details>
+    <details>
+      <summary>内容更新频繁吗？</summary>
+      <p>保持稳定的更新节奏，但不会一天轰炸很多条，更注重可读性。</p>
+    </details>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="gentle-footer">
+    <p>一个平静的页面，一次无压力的浏览。<br>
+    如果你愿意，可以随时回来。这里始终是 <a href="https://officialwap-mk.com">MK体育</a> 本来该有的样子。</p>
+    <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #517e88;">—— 没有催促，只有页面本身 ——</p>
+  </div>
+
+</div>
+</body>
+</html>
